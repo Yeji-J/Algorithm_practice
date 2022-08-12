@@ -1,39 +1,26 @@
 import sys
 sys.stdin = open("input.txt", "r")
 
-test_case = int(input())
-arr = [list(map(int, input().split())) for _ in range(100)]
-j = 99
-ans = 0
-i = 99
-for i in range(99, -1, -1):
-    if j == 99:
-        if arr[i][j-1]:
-            while True:
-                if arr[i][j]:
-                    j -= 1
-                else:
-                    break
-    elif j == 0:
-        if arr[i][j+1]:
-            while True:
-                if arr[i][j]:
-                    j += 1
-                else:
-                    break
-    else:
-        if arr[i][j-1]:
-            while True:
-                if arr[i][j]:
-                    j -= 1
-                else:
-                    break
-        if arr[i][j+1]:
-            while True:
-                if arr[i][j]:
-                    j += 1
-                else:
-                    break
-    print(i, j)
+T = 3
+for test_case in range(1, T+1):
+    N = 100
+    _ = int(input())
+    arr = [list(map(int, input().split())) for _ in range(N)]
 
-print(f'#{test_case} {j}')
+    i, j = N-1, 9
+    for tj in range(N):
+        if arr[i][tj] == 2:
+            j = tj
+            break
+
+    while i > 0:
+        if j > 0 and arr[i][j-1] == 1:
+            arr[i][j] = 0
+            j -= 1
+        elif j < 99 and arr[i][j+1] == 1:
+            arr[i][j] = 0
+            j += 1
+        else:
+            i -= 1
+
+    print(f'#{test_case} {j}')
