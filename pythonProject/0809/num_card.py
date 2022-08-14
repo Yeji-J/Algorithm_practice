@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("input.txt", "r")
+sys.stdin = open("../input.txt", "r")
 
 # T = int(input())
 # for test_case in (1, T+1):
@@ -25,7 +25,7 @@ for test_case in range(1, T + 1):
     N = int(input())
     nums = list(map(int, input()))
     # counts 배열 생성
-    #     # 0 ~ 9
+    # 0 ~ 9
     cnts = [0] * 10
     # cnts 인덱스에 숫자 개수 넣기
     for n in nums:
