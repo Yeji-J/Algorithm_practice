@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("input.txt", 'rt', encoding='UTF8')
+sys.stdin = open("../input.txt", 'rt', encoding='UTF8')
 
 di = [0, 1, 0, -1]
 dj = [1, 0, -1, 0]
