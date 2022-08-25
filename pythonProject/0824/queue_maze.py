@@ -28,6 +28,4 @@ for test_case in range(1, T+1):
                 sti, stj = i, j
                 break
 
-
-
     print(f'#{test_case} {bfs(sti, stj, N)}')
