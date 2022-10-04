@@ -1,43 +1,31 @@
 import sys
 sys.stdin = open("input.txt", 'rt', encoding='UTF8')
 
+def day(si, sj):                    # day 함수
+    for sj2 in range(1, W-sj):      # 리스트 하나의 길이 까지만
+        if res[si][sj+sj2] == -1:   # 구름이 없다면
+            res[si][sj+sj2] = sj2   # 누적된 day 초기화
+
+        else:                       # 구름을 만난다면 함수종료
+            return res
+
 H, W = map(int, input().split())
-arr = [input().split() for _ in range(H)]
-stk = []
-res = []
+cloud = [list(str(input())) for _ in range(H)]
 
-for lst in arr:
-    for ch in lst:
-        if not stk:             # 스택이 비었다면
-            stk.append(ch)      # 무조건 추가
+res = [[-1] * W for _ in range(H)]          # default -1
 
-        if ch != 'c':           # 구름이 아니라면
-            stk.append(ch)      # 무조건 추가
+# 구름 표시
+for i in range(H):
+    for j in range(W):
+        if cloud[i][j] == 'c':
+            res[i][j] = 0
 
-        else:                           # 구름일 때
-            if ch not in stk:           # 스택 안에 또다른 구름이 없으면 (첫 구름이면)
-                while not stk:          # 스택 안 모든 데이터를 빼고
-                    stk.pop(0)
-                    res.append(-1)      # -1로 추가
+# 구름이 뜨는 시간 표시
+for m in range(H):
+    for n in range(W):
+        if res[m][n] == 0:      # 구름을 만났을 때
+            day(m, n)           # day 표시하는 함수 실행
 
-            else:                       # 스택 안에 또다른 구름이 있으면
-                stk.pop(0)              # 구름을 빼고
-                res.append(0)
-                if stk:                     # 구름을 뺀 스택에 데이터가 있다면
-                    i = 0
-                    while not stk:          # 스택이 빌 때까지
-                        stk.pop(0)          # 빼고 i 증가하며 추가
-                        res.append(i)
-                        i += 1
-                    stk.apppend(ch)         # 구름 추가
-
-    if stk:
-        stk.pop(0)  # 구름 빼고
-        res.append(0)
-        i = 0
-        while not stk:
-            stk.pop(0)
-            res.append(i)
-            i += 1
-
-    print(res)
+#출력
+for lst in res:
+    print(*lst)

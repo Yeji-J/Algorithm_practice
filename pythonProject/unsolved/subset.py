@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("input.txt", 'rt', encoding='UTF8')
+sys.stdin = open("../input.txt", 'rt', encoding='UTF8')
 
 def f(i, N):
     global cnts

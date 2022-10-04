@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("input.txt", 'rt', encoding='UTF8')
+sys.stdin = open("../input.txt", 'rt', encoding='UTF8')
 
 # 후위표기
 def postF():

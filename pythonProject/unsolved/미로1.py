@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("input.txt", 'rt', encoding='UTF8')
+sys.stdin = open("../input.txt", 'rt', encoding='UTF8')
 
 def escape(i, j):
     visited = [[0] * 16 for _ in range(16)]     # 방문 표시

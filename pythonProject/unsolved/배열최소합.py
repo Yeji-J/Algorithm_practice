@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("input.txt", 'rt', encoding='UTF8')
+sys.stdin = open("../input.txt", 'rt', encoding='UTF8')
 
 # typical back-tracking
 def bTrack(n, sm):
